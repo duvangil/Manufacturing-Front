@@ -1,0 +1,179 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.login-card {
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border-radius: 16px !important;
+  overflow: hidden;
+  animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 24px !important;
+  text-align: center;
+
+  .mat-card-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .login-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .mat-card-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+  }
+}
+
+.mat-card-content {
+  padding: 10px 16px !important;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.mat-form-field {
+  .mat-form-field-outline {
+    border-radius: 12px;
+  }
+}
+
+.checkbox-section {
+  margin: 16px 0 24px 0;
+  
+  .mat-checkbox {
+    .mat-checkbox-label {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+}
+
+.login-button {
+  height: 48px;
+  border-radius: 12px !important;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  position: relative;
+
+  .mat-spinner {
+    margin-right: 8px;
+  }
+
+  .mat-icon {
+    margin-right: 8px;
+  }
+
+  &:not(:disabled) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    
+    &:hover {
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+      transform: translateY(-2px);
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+.mat-card-actions {
+  padding: 8px 24px !important;
+  
+  &.additional-actions {
+    padding-top: 16px !important;
+  }
+}
+
+.forgot-password-btn {
+  font-size: 14px;
+  text-transform: none;
+}
+
+.signup-text {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  text-align: center;
+  
+  .mat-button {
+    font-size: 14px;
+    text-transform: none;
+    padding: 0 8px;
+    min-width: auto;
+  }
+}
+
+.mat-divider {
+  margin: 8px 0;
+}
+
+// Estilos para diferentes temas de Material
+.mat-form-field-appearance-outline {
+  .mat-form-field-outline-thick {
+    color: #667eea;
+  }
+  
+  &.mat-focused {
+    .mat-form-field-label {
+      color: #667eea;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 480px) {
+  .login-wrapper {
+    padding: 16px;
+  }
+  
+  .login-card {
+    max-width: 100%;
+  }
+  
+  .mat-card-content {
+    padding: 24px 16px 16px !important;
+  }
+  
+  .mat-card-actions {
+    padding: 8px 16px !important;
+  }
+}
+
+// Personalización de colores para Angular Material
+::ng-deep {
+  .mat-primary {
+    --mat-option-selected-state-label-text-color: #667eea;
+  }
+}

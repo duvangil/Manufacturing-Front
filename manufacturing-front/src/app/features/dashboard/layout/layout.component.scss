@@ -1,0 +1,29 @@
+.login-wrapper {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 250px;
+}
+
+.main-content {
+  padding: 1rem;
+}
+
+.hide-desktop {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hide-desktop {
+    display: inline-flex;
+  }
+
+  .sidenav {
+    width: 200px;
+  }
+}

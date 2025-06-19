@@ -1,0 +1,76 @@
+<mat-card>
+  <h2>Listado de productos</h2>
+
+  <table mat-table [dataSource]="products" class="mat-elevation-z8">
+
+    <!-- Nombre -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+    </ng-container>
+
+    <!-- Tipo Elaboración -->
+    <ng-container matColumnDef="elaborationType">
+      <th mat-header-cell *matHeaderCellDef> Tipo de elaboración </th>
+      <td mat-cell *matCellDef="let element"> {{ element.elaborationTypeName || element.elaborationTypeName }} </td>
+    </ng-container>
+
+    <!-- Estado -->
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let element"> {{ element.state }} </td>
+    </ng-container>
+
+    <!-- Cantidad -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+      <td mat-cell *matCellDef="let element"> {{ element.quantity }} </td>
+    </ng-container>
+
+    <!-- Fecha creación -->
+    <ng-container matColumnDef="dateCreated">
+      <th mat-header-cell *matHeaderCellDef> Fecha creación </th>
+      <td mat-cell *matCellDef="let element"> {{ element.dateCreated | date:'short' }} </td>
+    </ng-container>
+
+    <!-- Acciones -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let product">
+
+        <ng-container *ngIf="product.quantity === 0 && product.state !== 'Salido'">
+          <button mat-button color="warn" (click)="updateProductState(product)">
+            <mat-icon>exit_to_app</mat-icon> Marcar como salida
+          </button>
+        </ng-container>
+
+        <ng-container *ngIf="product.state === 'En stock' && product.quantity > 0">
+          <button mat-button color="warn" (click)="updateProductState(product)">
+            <mat-icon>report_problem</mat-icon> Marcar como defectuoso
+          </button>
+        </ng-container>
+
+        <ng-container *ngIf="product.state === 'Defectuoso'">
+          <button mat-button color="primary" (click)="updateProductState(product)">
+            <mat-icon>check_circle</mat-icon> Marcar en stock
+          </button>
+        </ng-container>
+
+
+        <ng-container *ngIf="product.state === 'En stock' && product.quantity > 0">
+          <button mat-button color="accent" (click)="openExitDialog(product)">
+            <mat-icon>inventory_2</mat-icon> Gestionar salida
+          </button>
+        </ng-container>
+
+      </td>
+    </ng-container>
+
+
+    <!-- Cabeceras y filas -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <p *ngIf="products.length === 0">No hay productos disponibles.</p>
+</mat-card>

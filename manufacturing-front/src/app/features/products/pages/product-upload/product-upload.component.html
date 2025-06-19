@@ -1,0 +1,18 @@
+<div class="upload-container">
+  <h2 class="text-xl font-bold mb-4">Cargar productos desde Excel</h2>
+
+  <input type="file" (change)="onFileSelected($event)" accept=".xlsx" />
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onUpload()"
+    [disabled]="!selectedFile"
+    class="mt-3"
+  >
+    Subir archivo
+  </button>
+
+  <p *ngIf="uploadSuccess" class="text-green-600 mt-3">Archivo cargado correctamente.</p>
+  <p *ngIf="uploadError" class="text-red-600 mt-3">{{ uploadError }}</p>
+</div>
